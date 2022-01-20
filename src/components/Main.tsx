@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
+import Control from './Control/Control';
 
 import './Main.css';
 
@@ -11,14 +12,14 @@ function Main() {
   const [maxBoatsInRiver, setMaxBoatsInRiver] = useState(2);
   const [totalBoats, setTotalBoats] = useState(20);
   const [finalResult, setFinalResult] = useState(0);
-  
-  // Actual logic and computation of answers 
+
+  // Actual logic and computation of answers
   const getResult = () => {
-    let maxBlocksPossible = 0
+    let maxBlocksPossible = 0;
     const eachLoadUnload = loadTime + unloadTime;
     let timer = timeLimit;
     while (timer > 2 * distance) {
-      const remainingTime = timer - (2 * distance);
+      const remainingTime = timer - 2 * distance;
       console.log('remainingTime', remainingTime);
       const possibleK = Math.floor(remainingTime / eachLoadUnload);
       console.log('possibleK', possibleK);
@@ -26,68 +27,72 @@ function Main() {
       console.log('K', k);
       const kLoadUnload = eachLoadUnload * k;
       console.log('KLoadUnload', kLoadUnload);
-      timer = timer - 2*distance - kLoadUnload;
+      timer = timer - 2 * distance - kLoadUnload;
       console.log('timer', timer);
       maxBlocksPossible += k * maxBoatsInRiver;
       console.log('maxBlocksPossible', maxBlocksPossible);
     }
     setFinalResult(maxBlocksPossible);
-  }
+  };
   const onLoadTimeChange = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log(event, event.target.value)
+    console.log(event, event.target.value);
     const newValue = parseInt(event.target.value);
     setLoadTime(newValue);
-  }
+  };
   const onUnloadTimeChange = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log(event, event.target.value)
+    console.log(event, event.target.value);
     const newValue = parseInt(event.target.value);
     setUnloadTime(newValue);
-  }
+  };
   const onTimeLimitChange = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log(event, event.target.value)
+    console.log(event, event.target.value);
     const newValue = parseInt(event.target.value);
     setTimeLimit(newValue);
-  }
+  };
   const onDistanceChange = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log(event, event.target.value)
+    console.log(event, event.target.value);
     const newValue = parseInt(event.target.value);
     setDistance(newValue);
-  }
+  };
   const onMaxBoatsInRiverChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newValue = parseInt(event.target.value);
     setMaxBoatsInRiver(newValue);
-  }
+  };
   const onMaxBlocksPerBoatChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newValue = parseInt(event.target.value);
     setMaxBlocksPerBoat(newValue);
-  }
+  };
   const onTotalBoatsChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newValue = parseInt(event.target.value);
     setTotalBoats(newValue);
-  }
+  };
 
   useEffect(() => {
     getResult();
-  }, [loadTime, unloadTime, timeLimit, distance, maxBoatsInRiver, maxBlocksPerBoat, totalBoats, getResult])
+  }, [
+    loadTime,
+    unloadTime,
+    timeLimit,
+    distance,
+    maxBoatsInRiver,
+    maxBlocksPerBoat,
+    totalBoats,
+  ]);
 
   return (
-    <div className="Main">
-      <p>Load Time: {loadTime}</p>
-      <input value={loadTime} onChange={(e) => onLoadTimeChange(e)} type="number" min="0"></input>
-      <p>Unload Time: {unloadTime}</p>
-      <input value={unloadTime} onChange={(e) => onUnloadTimeChange(e)} type="number" min="0"></input>
-      <p>Time Limit: {timeLimit}</p>
-      <input value={timeLimit} onChange={(e) => onTimeLimitChange(e)} type="number" min="0"></input>
-      <p>Distance: {distance}</p>
-      <input value={distance} onChange={(e) => onDistanceChange(e)} type="number" min="0"></input>
-      <p>Max Boats In River: {maxBoatsInRiver}</p>
-      <input value={maxBoatsInRiver} onChange={(e) => onMaxBoatsInRiverChange(e)} type="number" min="0"></input>
-      <p>Max Blocks per Boat: {maxBlocksPerBoat}</p>
-      <input value={maxBlocksPerBoat} onChange={(e) => onMaxBlocksPerBoatChange(e)} type="number" min="0"></input>
-      <p>Total Boats: {totalBoats}</p>
-      <input value={totalBoats} onChange={(e) => onTotalBoatsChange(e)} type="number" min="0"></input>
-      <div>{finalResult}</div>
-      <button onClick={getResult}>Get Result</button>
+    <div className='Main'>
+      <div className='controls'>
+        <Control title="Load Time" value={loadTime} handler={onLoadTimeChange}></Control>
+        <Control title="Unload Time" value={unloadTime} handler={onUnloadTimeChange}></Control>
+        <Control title="Time Limit" value={timeLimit} handler={onTimeLimitChange}></Control>
+        <Control title="Distance" value={distance} handler={onDistanceChange}></Control>
+        <Control title="Max Boats In River" value={maxBoatsInRiver} handler={onMaxBoatsInRiverChange}></Control>
+        <Control title="Max Blocks per Boat" value={maxBlocksPerBoat} handler={onMaxBlocksPerBoatChange}></Control>
+        <Control title="Total Boats" value={totalBoats} handler={onTotalBoatsChange}></Control>
+      </div>
+      <div className='answer'>
+        <h2>Maximum Total Blocks: {finalResult}</h2>
+      </div>
     </div>
   );
 }
