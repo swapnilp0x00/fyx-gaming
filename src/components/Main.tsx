@@ -77,22 +77,22 @@ function Main() {
     <div className='Main'>
       <div className='controls'>
         <Control
-          title='Load Time'
+          title='Load Time (min)'
           value={loadTime}
           handler={onLoadTimeChange}
         ></Control>
         <Control
-          title='Unload Time'
+          title='Unload Time (min)'
           value={unloadTime}
           handler={onUnloadTimeChange}
         ></Control>
         <Control
-          title='Time Limit'
+          title='Time Limit (min)'
           value={timeLimit}
           handler={onTimeLimitChange}
         ></Control>
         <Control
-          title='Distance'
+          title='Distance (min)'
           value={distance}
           handler={onDistanceChange}
         ></Control>
