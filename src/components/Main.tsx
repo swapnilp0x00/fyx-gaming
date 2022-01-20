@@ -20,17 +20,11 @@ function Main() {
     let timer = timeLimit;
     while (timer > 2 * distance) {
       const remainingTime = timer - 2 * distance;
-      console.log('remainingTime', remainingTime);
       const possibleK = Math.floor(remainingTime / eachLoadUnload);
-      console.log('possibleK', possibleK);
       const k = Math.min(possibleK, maxBlocksPerBoat);
-      console.log('K', k);
       const kLoadUnload = eachLoadUnload * k;
-      console.log('KLoadUnload', kLoadUnload);
       timer = timer - 2 * distance - kLoadUnload;
-      console.log('timer', timer);
       maxBlocksPossible += k * maxBoatsInRiver;
-      console.log('maxBlocksPossible', maxBlocksPossible);
     }
     setFinalResult(maxBlocksPossible);
   };
