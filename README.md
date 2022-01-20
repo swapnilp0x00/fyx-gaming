@@ -1,5 +1,10 @@
 # Pharaoh of Egypt
 
+# Example
+
+![Pharaoh of Egypt](./image.png)
+
+
 To start the project
 In the project directory, you can run:
 
@@ -27,6 +32,3 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 
-# Example
-
-![Tux, the Linux mascot](./image.png)
