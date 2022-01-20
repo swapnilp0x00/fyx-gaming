@@ -82,13 +82,41 @@ function Main() {
   return (
     <div className='Main'>
       <div className='controls'>
-        <Control title="Load Time" value={loadTime} handler={onLoadTimeChange}></Control>
-        <Control title="Unload Time" value={unloadTime} handler={onUnloadTimeChange}></Control>
-        <Control title="Time Limit" value={timeLimit} handler={onTimeLimitChange}></Control>
-        <Control title="Distance" value={distance} handler={onDistanceChange}></Control>
-        <Control title="Max Boats In River" value={maxBoatsInRiver} handler={onMaxBoatsInRiverChange}></Control>
-        <Control title="Max Blocks per Boat" value={maxBlocksPerBoat} handler={onMaxBlocksPerBoatChange}></Control>
-        <Control title="Total Boats" value={totalBoats} handler={onTotalBoatsChange}></Control>
+        <Control
+          title='Load Time'
+          value={loadTime}
+          handler={onLoadTimeChange}
+        ></Control>
+        <Control
+          title='Unload Time'
+          value={unloadTime}
+          handler={onUnloadTimeChange}
+        ></Control>
+        <Control
+          title='Time Limit'
+          value={timeLimit}
+          handler={onTimeLimitChange}
+        ></Control>
+        <Control
+          title='Distance'
+          value={distance}
+          handler={onDistanceChange}
+        ></Control>
+        <Control
+          title='Max Boats In River'
+          value={maxBoatsInRiver}
+          handler={onMaxBoatsInRiverChange}
+        ></Control>
+        <Control
+          title='Max Blocks per Boat'
+          value={maxBlocksPerBoat}
+          handler={onMaxBlocksPerBoatChange}
+        ></Control>
+        <Control
+          title='Total Boats'
+          value={totalBoats}
+          handler={onTotalBoatsChange}
+        ></Control>
       </div>
       <div className='answer'>
         <h2>Maximum Total Blocks: {finalResult}</h2>
