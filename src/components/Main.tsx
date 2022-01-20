@@ -16,15 +16,15 @@ function Main() {
   // Actual logic and computation of answers
   const getResult = () => {
     let maxBlocksPossible = 0;
-    const eachLoadUnload = loadTime + unloadTime;
+    const eachLoadUnload = loadTime + unloadTime;                       // total overhead for each block
     let timer = timeLimit;
     while (timer > 2 * distance) {
-      const remainingTime = timer - 2 * distance;
-      const possibleK = Math.floor(remainingTime / eachLoadUnload);
-      const k = Math.min(possibleK, maxBlocksPerBoat);
-      const kLoadUnload = eachLoadUnload * k;
-      timer = timer - 2 * distance - kLoadUnload;
-      maxBlocksPossible += k * maxBoatsInRiver;
+      const remainingTime = timer - 2 * distance;                       // total time that can be used for load and unload
+      const possibleK = Math.floor(remainingTime / eachLoadUnload);    // maximum possibleK
+      const k = Math.min(possibleK, maxBlocksPerBoat);                 // Limit K based on maximum blocks per boat limit
+      const kLoadUnload = eachLoadUnload * k;                          
+      timer = timer - 2 * distance - kLoadUnload;                     // subtract K overhead + travel time from time.
+      maxBlocksPossible += k * maxBoatsInRiver;                       // Multiply K by total number of boats to get final answer
     }
     setFinalResult(maxBlocksPossible);
   };
