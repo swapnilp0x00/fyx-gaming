@@ -5,7 +5,7 @@ function Control(props: { [key: string]: any }) {
   return (
     <div className='Control'>
       <h5> {props.title}: {props.value} </h5>
-      <input
+      <input id="input" aria-label="input"
         value={props.value}
         onChange={(e) => props.handler(e)}
         type='number'
